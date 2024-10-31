@@ -1,0 +1,174 @@
+6.4
+void setup() {
+  String str = "Hej med dig!";
+  
+  // For-loop to print the first 5 characters
+  println("Using for-loop:");
+  for (int i = 0; i < 5; i++) {
+    print(str.charAt(i));
+  }
+  println();
+  
+    // While-loop to print the first 5 characters
+  println("Using while-loop:");
+  int i = 0;
+  while (i < 5) {
+    print(str.charAt(i));
+    i++;
+  }
+  println();
+}
+6.5
+void setup() {
+  String sentence = "Dette er en sætning, som indeholder mange e’er. Men hvor mange er der?";
+  int countFor = 0;
+  int countWhile = 0;
+  
+  // For-loop to count and print 'e'
+  println("Using for-loop:");
+  for (int i = 0; i < sentence.length(); i++) {
+    if (sentence.charAt(i) == 'e') {
+      print(sentence.charAt(i));
+      countFor++;
+    }
+  }
+  println("\nTotal 'e's found using for-loop: " + countFor);
+  
+  // While-loop to count and print 'e'
+  println("Using while-loop:");
+  int i = 0;
+  while (i < sentence.length()) {
+    if (sentence.charAt(i) == 'e') {
+      print(sentence.charAt(i));
+      countWhile++;
+    }
+    i++;
+  }
+  println("\nTotal 'e's found using while-loop: " + countWhile);
+  
+  // Print length of the sentence
+  println("Length of the sentence: " + sentence.length());
+}
+6.6
+void setup() {
+  String str = "I Afrika lever der mange dyr på savannen, et af dem er zebraen. Zebraen er en flok dyr.";
+  int i = 0;
+  boolean found = false;
+  
+  println("Searching for 'Z' using while-loop:");
+  while (i < str.length() && !found) {
+    if (str.charAt(i) == 'Z') {
+      println("Found 'Z' at index: " + i);
+      found = true;
+    }
+    i++;
+  }
+  if (!found) {
+    println("No 'Z' found in the text.");
+  }
+}
+6.7
+void setup() {
+  String str = "I Afrika lever der mange dyr på savannen, et af dem er zebraen. Zebraen er et flokdyr.";
+  int countZ = 0;
+  
+  println("Counting 'Z' and 'z' using for-loop:");
+  for (int i = 0; i < str.length(); i++) {
+    if (str.charAt(i) == 'Z' || str.charAt(i) == 'z') {
+      countZ++;
+    }
+  }
+  println("Total 'Z' or 'z' found: " + countZ);
+}
+6.8 
+void setup() {
+  String str = "I Afrika lever der mange dyr på savannen, et af dem er zebraen. Zebraen er en flok dyr.";
+  boolean found = false;
+  
+  println("Searching for 'Z' using for-loop:");
+  for (int i = 0; i < str.length() && !found; i++) {
+    if (str.charAt(i) == 'Z') {
+      println("Found 'Z' at index: " + i);
+      found = true;
+    }
+  }
+  if (!found) {
+    println("No 'Z' found in the text.");
+  }
+}
+
+void setup() {
+  String str = "I Afrika lever der mange dyr på savannen, et af dem er zebraen. Zebraen er et flokdyr.";
+  int countZ = 0;
+  int i = 0;
+  
+  println("Counting 'Z' and 'z' using while-loop:");
+  while (i < str.length()) {
+    if (str.charAt(i) == 'Z' || str.charAt(i) == 'z') {
+      countZ++;
+    }
+    i++;
+  }
+  println("Total 'Z' or 'z' found: " + countZ);
+}
+7.1
+void setup() {
+  size(800, 800);
+  drawRedCircle();
+  drawBlueSquare();
+}
+
+void drawRedCircle() {
+  fill(255, 0, 0); // Red color
+  noStroke();
+  ellipse(width / 2, height / 2, 100, 100); // Circle at center with 100px diameter
+}
+
+void drawBlueSquare() {
+  fill(0, 0, 255); // Blue color
+  noStroke();
+  rectMode(CENTER);
+  rect(width / 2, height / 2, 100, 100); // Square at center with 100px side
+}
+7.2
+void setup() {
+  size(800, 800);
+  drawRowOfCircles();
+}
+
+void drawRowOfCircles() {
+  fill(255, 0, 0); // Red color
+  noStroke();
+  int circleDiameter = 50;
+  for (int i = 0; i < 8; i++) {
+    ellipse(100 + i * 80, height / 2, circleDiameter, circleDiameter); // Positioning circles horizontally
+  }
+}
+7.3
+void setup() {
+  size(800, 800);
+  drawFlower();
+}
+
+void drawFlower() {
+  // Draw center blue square
+  fill(0, 0, 255); // Blue color
+  noStroke();
+  rectMode(CENTER);
+  rect(width / 2, height / 2, 100, 100); // Center square
+  
+  // Draw petals around the square
+  fill(255, 0, 0); // Red color
+  int petalDiameter = 60;
+  int numPetals = 8;
+  float angle = TWO_PI / numPetals; // Divide 360 degrees by number of petals
+
+  for (int i = 0; i < numPetals; i++) {
+    pushMatrix();
+    translate(width / 2, height / 2);
+    rotate(i * angle);
+    translate(80, 0); // Move petal away from center
+    ellipse(0, 0, petalDiameter, petalDiameter); // Draw petal
+    popMatrix();
+  }
+}
